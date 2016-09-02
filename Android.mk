@@ -33,6 +33,9 @@ include $(BUILD_SHARED_LIBRARY)
 ifeq ($(TARGET_PRODUCT), sabresd_7d)
     include $(LOCAL_PATH)/conf/fsl/sabresd_7d/Android.mk
 endif
+ifeq ($(TARGET_PRODUCT), warp7)
+    include $(LOCAL_PATH)/conf/fsl/sabresd_7d/Android.mk
+endif
 ifeq ($(TARGET_PRODUCT), full_maguro)
     include $(LOCAL_PATH)/conf/samsung/maguro/Android.mk
 endif
