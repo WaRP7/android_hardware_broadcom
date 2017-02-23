@@ -6,6 +6,7 @@ include $(CLEAR_VARS)
 
 BDROID_DIR := $(TOP_DIR)external/bluetooth/bluedroid
 
+LOCAL_CFLAGS += -DRFKILL_SERVER_PWR_CTL_ENABLE
 LOCAL_SRC_FILES := \
         src/bt_vendor_brcm.c \
         src/hardware.c \
@@ -49,4 +50,5 @@ ifeq ($(TARGET_PRODUCT), full_wingray)
     include $(LOCAL_PATH)/conf/moto/wingray/Android.mk
 endif
 
+include hardware/broadcom/libbt/rfservice/Android.mk
 endif # BOARD_HAVE_BLUETOOTH_BCM

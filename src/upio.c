@@ -282,6 +282,7 @@ int upio_set_bluetooth_power(int on)
     if (is_rfkill_disabled())
         return 0;
 
+#ifndef RFKILL_SERVER_PWR_CTL_ENABLE
     if (rfkill_id == -1)
     {
         if (init_rfkill())
@@ -308,6 +309,14 @@ int upio_set_bluetooth_power(int on)
 
     if (fd >= 0)
         close(fd);
+
+#else
+    char cmd[128];
+    sprintf(cmd, "/system/bin/.bt_pwr %c 51872307", buffer);
+    ALOGI("execute command: %s", cmd);
+    ret = system(cmd);
+    ALOGI("set_bluetooth_power : system %s return: %d",cmd, ret);
+#endif
 
     return ret;
 }
